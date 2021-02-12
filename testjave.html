@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Oliver Wayne CV Map</title>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin="">
+    </script>
+
+
+  <style>
+  	html, body {
+  		height: 100%;
+  		margin: 0;
+  	}
+  	#map {
+  		width: 100%;
+  		height: 100%;
+  	}
+  </style>
+
+
+</head>
+<body>
+<div id="map"></div>
+<script>
+	var map = L.map('map').setView([51.505, -0.09], 5);
+
+	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+		maxZoom: 18,
+		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+		id: 'mapbox/light-v9',
+		tileSize: 512,
+		zoomOffset: -1
+	}).addTo(map);
+
+
+  var loc = [
+		["<b>Edinbrugh Univeristy</b><br>Graduated with a Masters with Merit in GIS 2018.",55.945521, -3.188698],
+		["<b>Nottingham Trent Univeristy</b><br>Graduated with 1st class Honours in Geography 2017.",53.061308, -0.957724],
+		["<b>BWOC petrol station</b><br>Worked as forecourt attendant between 2011 - 2017.",51.244027, -2.945408],
+		["<b>PSO Grade 3 Environmental Agency </b><br>Worked as Flood and Coastal Risk Management Officer with the Environment Agency from 2019 - Present.",50.463917, -4.711472],
+    ["<b>GIS internships Archipelagos</b><br>Interned with Archipelagos for 5 months where i worked with applied lidar, multibeam sonar and sattelite imagery",37.708107, 27.033195],
+    ["<b>Island conservation GVI</b><br>Volunteered with GVI in Seychelle island of Curieuse for two months, working with gaiant turtle, reef sharks and Mangrove forsets",-4.288075, 55.722999]
+		];
+
+    for (var i = 0; i < loc.length; i++) {
+			marker = new L.marker([loc[i][1],loc[i][2]])
+				.bindPopup(loc[i][0])
+				.addTo(map);
+		}
+
+
+</script>
+</body>
+</html>
